@@ -82,45 +82,23 @@ exports.getallcontroller = asyncHandler(async (req, res) => {
 
 exports.editcarController = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const {
-    image,
-    model,
-    year,
-    listPrice,
-    colors,
-    mileage,
-    power,
-    maxSpeed,
-    odometer,
-    majorScratches,
-    originalPaint,
-    accidentsReported,
-    previousBuyers,
-    registrationPlace,
-  } = req.body;
+  const { listPrice } = req.body;
 
-  OEMSpecs.findByIdAndUpdate(
-    id,
-    {
-      image,
-      model,
-      year,
-      listPrice,
-      colors,
-      mileage,
-      power,
-      maxSpeed,
-      odometer,
-      majorScratches,
-      originalPaint,
-      accidentsReported,
-      previousBuyers,
-      registrationPlace,
-    },
-    { new: true }
-  )
-    .then((updatedCar) => res.json(updatedCar))
-    .catch((err) => res.status(500).json(err));
+  try {
+    const updatedCar = await OEMSpecs.findByIdAndUpdate(
+      id,
+      { listPrice },
+      { new: true }
+    );
+
+    if (!updatedCar) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
+
+    res.json(updatedCar);
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating car', error });
+  }
 });
 
 exports.deletecarController = asyncHandler(async (req, res) => {

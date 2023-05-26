@@ -17,8 +17,8 @@ const getcarmileage=require("../controller/car.controller")
 carrouter.post('/add/cars', authenticateUser, carController.createCar);
 carrouter.get('/cars/:model/:year', carController.get_model_year_controller);
 carrouter.get('/cars', carController.getallcontroller);
-carrouter.put('/cars/edit/:id', authenticateUser, carController.editcarController);
-carrouter.delete('/cars/delete/:id', authenticateUser, carController.deletecarController);
+carrouter.put('/cars/edit/:id', carController.editcarController);
+carrouter.delete('/cars/delete/:id',  carController.deletecarController);
 carrouter.get('/cars/price/:minPrice/:maxPrice', carController.getcarprice);
 carrouter.get('/api/color/:colors', carController.getCarsByColor);
 carrouter.get('/cars/mileage/:minPrice/:maxPrice', carController.getcarmileage);
