@@ -31,12 +31,12 @@ app.get("/",(req,res)=>{
 })
 
 
-app.listen(5000, async () => {
+app.listen(3000, async () => {
     try {
       await connection;
       console.log("db is running");
     } catch (error) {
       console.log(error);
     }
-    console.log(`port is running 5000`);
+    console.log(`port is running 3000`);
   });
