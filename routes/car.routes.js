@@ -9,6 +9,7 @@ const editcarController =require('../controller/car.controller');
 const getcarprice=require("../controller/car.controller")
 const { authenticateUser } = require('../midleware/car.middleware')
 
+const getcarbyuser=require("../controller/car.controller")
 const getCarsByColor=require("../controller/car.controller")
 const getcarmileage=require("../controller/car.controller")
 
@@ -21,4 +22,6 @@ carrouter.delete('/cars/delete/:id', authenticateUser, carController.deletecarCo
 carrouter.get('/cars/price/:minPrice/:maxPrice', carController.getcarprice);
 carrouter.get('/api/color/:colors', carController.getCarsByColor);
 carrouter.get('/cars/mileage/:minPrice/:maxPrice', carController.getcarmileage);
+
+carrouter.get('/cars/api/users/:userId/cars', authenticateUser,carController.getcarbyuser);
 module.exports = carrouter;
