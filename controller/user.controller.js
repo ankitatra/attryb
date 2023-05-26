@@ -31,7 +31,7 @@ const loginController = asyncHandler(async (req, res) => {
     // create jwt token
     const token = jwt.sign({ _id: isUser._id }, "masai");
 
-    return res.send({ msg : "Successfully Login", user : {username : isUser.username, pic : isUser.profile_picture,  token}});
+    return res.send({ msg : "Successfully Login", user : {username : isUser.username, pic : isUser.profile_picture, id:isUser._id , token}});
   } catch (error) {
     console.log(error)
     return res.status(500).send({ error: "Somthing Went Wrong!" });
