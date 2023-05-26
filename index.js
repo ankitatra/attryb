@@ -23,7 +23,7 @@ const {authRouter} = require('./routes/user.routes');
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+   origin: 'https://charming-bombolone-60247a.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
