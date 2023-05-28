@@ -16,7 +16,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin:"http://localhost:3000",
+    origin: "https://charming-bombolone-60247a.netlify.app",
+    // origin:"http://localhost:3000",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
